@@ -1,14 +1,119 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Site</title>
-</head>
-<body>
-  <h1>Welcome</h1>
+  <title>Mothia – Home</title>
+  <style>
+    /* -------------------------------------------------
+       Basic reset & typography
+       ------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: system-ui, sans-serif; line-height:1.5; }
 
-  <!-- Link to the About page -->
-  <a href="page2.html">About Me</a>
+    /* -------------------------------------------------
+       Top navigation bar
+       ------------------------------------------------- */
+    .top-nav {
+      background:#1a1a1a;               /* dark background */
+      color:#fff;
+      position:sticky;                  /* stays at top while scrolling */
+      top:0;
+      width:100%;
+      z-index:1000;
+    }
+    .top-nav .container {
+      max-width:1200px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0.5rem 1rem;
+    }
+    .top-nav .logo {
+      font-size:1.25rem;
+      font-weight:600;
+      text-decoration:none;
+      color:#fff;
+    }
+    .top-nav ul {
+      list-style:none;
+      display:flex;
+      gap:1.5rem;
+    }
+    .top-nav a {
+      color:#fff;
+      text-decoration:none;
+      font-size:0.95rem;
+      transition:color 0.2s ease;
+    }
+    .top-nav a:hover { color:#ffcc00; }   /* highlight on hover */
+
+    /* -------------------------------------------------
+       Mobile‑friendly hamburger (pure CSS)
+       ------------------------------------------------- */
+    .menu-toggle {
+      display:none;                     /* hidden on desktop */
+      flex-direction:column;
+      cursor:pointer;
+    }
+    .menu-toggle span {
+      height:3px;
+      width:24px;
+      background:#fff;
+      margin:4px 0;
+      transition:transform 0.3s ease;
+    }
+
+    /* Hide the regular list on small screens */
+    @media (max-width:768px) {
+      .top-nav ul {
+        position:absolute;
+        top:100%; left:0; right:0;
+        background:#1a1a1a;
+        flex-direction:column;
+        gap:0;
+        overflow:hidden;
+        max-height:0;
+        transition:max-height 0.3s ease;
+      }
+      .top-nav input[type=checkbox]:checked ~ ul {
+        max-height:500px;               /* enough for all links */
+      }
+      .menu-toggle { display:flex; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====================== TOP NAVIGATION BAR ====================== -->
+  <nav class="top-nav">
+    <div class="container">
+      <!-- Logo / Home link -->
+      <a href="index.html" class="logo">MySite</a>
+
+      <!-- Hidden checkbox controls the mobile menu -->
+      <input type="checkbox" id="nav-toggle" style="display:none;">
+      <label for="nav-toggle" class="menu-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+
+      <!-- Navigation links -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="page2.html">page2example</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page content goes below -->
+  <main style="padding:2rem;">
+    <h1>Welcome to My Site</h1>
+    <p>This is a placeholder page – replace it with your own content.</p>
+  </main>
+
 </body>
 </html>
